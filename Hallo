@@ -1,0 +1,2 @@
+a = "Hallo :3"
+print(a)
