@@ -1,0 +1,47 @@
+import time
+
+class Pet:
+    def __init__(self, name, species="Собака"):
+        self.name = name
+        self.species = species
+        self.hunger = 50  # 0 - ситий, 100 - дуже голодний
+        self.energy = 50  # 0 - втомлений, 100 - бадьорий
+        self.happiness = 50 # 0 - сумний, 100 - щасливий
+
+    def status(self):
+        print(f"\n--- Стан {self.name} ({self.species}) ---")
+        print(f"Голод: {self.hunger}/100")
+        print(f"Енергія: {self.energy}/100")
+        print(f"Щастя: {self.happiness}/100")
+
+    def feed(self):
+        print(f"\nВи годуєте {self.name}...")
+        self.hunger = max(0, self.hunger - 20)
+        self.happiness = min(100, self.happiness + 5)
+        print("Ням-ням! Голод зменшився.")
+
+    def play(self):
+        if self.energy > 10:
+            print(f"\nВи граєтесь з {self.name}!")
+            self.happiness = min(100, self.happiness + 20)
+            self.energy -= 15
+            self.hunger += 10
+        else:
+            print(f"\n{self.name} занадто втомлений(а) для ігор.")
+
+    def sleep(self):
+        print(f"\n{self.name} лягає спати... Zzz...")
+        time.sleep(1) # Невелика затримка для реалістичності
+        self.energy = 100
+        self.hunger += 20
+        print("Тепер ваш улюбленець повний сил!")
+
+# Приклад використання:
+my_pet = Pet("Марти", "Собака")
+
+my_pet.status()
+my_pet.feed()
+my_pet.play()
+my_pet.status()
+my_pet.sleep()
+my_pet.status()
