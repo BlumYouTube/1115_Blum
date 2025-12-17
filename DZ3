@@ -1,0 +1,40 @@
+class Fish:
+    def __init__(self, name, species):
+        self.name = name
+        self.species = species
+        self.is_hungry = True
+
+    def eat(self):
+        if self.is_hungry:
+            print(f"Рибка {self.name} ({self.species}) поїла.")
+            self.is_hungry = False
+        else:
+            print(f"Рибка {self.name} вже сита.")
+
+class Aquarium:
+    def __init__(self, capacity):
+        self.capacity = capacity
+        self.fishes = []
+
+    def add_fish(self, fish):
+        if len(self.fishes) < self.capacity:
+            self.fishes.append(fish)
+            print(f"Рибку {fish.name} додано до акваріума.")
+        else:
+            print("В акваріумі немає місця!")
+
+    def feed_all(self):
+        print("\n--- Процес годування ---")
+        for fish in self.fishes:
+            fish.eat()
+
+# Виконання
+my_aquarium = Aquarium(capacity=2)
+
+fish1 = Fish("Немо", "Клоун")
+fish2 = Fish("Дорі", "Хірург")
+
+my_aquarium.add_fish(fish1)
+my_aquarium.add_fish(fish2)
+
+my_aquarium.feed_all()
