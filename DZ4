@@ -1,0 +1,28 @@
+class Engine:
+    def __init__(self):
+        self.fuel_type = "Електрика"
+    def start_engine(self):
+        return "Двигун запущено!"
+
+class Electronics:
+    def __init__(self):
+        self.screen_size = "10 дюймів" 
+        
+    def activate_gps(self):            
+        return "GPS навігація активована."
+
+class SmartCar(Engine, Electronics):
+    def __init__(self, model):
+        Engine.__init__(self)
+        Electronics.__init__(self)
+        self.model = model
+
+    def show_info(self):
+        print(f"Автомобіль: {self.model}")
+        print(f"Тип палива: {self.fuel_type}")
+        print(f"Екран: {self.screen_size}")
+        print(self.start_engine())
+        print(self.activate_gps())
+
+my_car = SmartCar("Tesla Model S")
+my_car.show_info()
